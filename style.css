@@ -16,14 +16,6 @@ body {
   margin-top: 40px;
 }
 
-#ransom-title span {
-  display: inline-block;
-  padding: 4px 6px;
-  margin: 2px;
-  background: white;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-}
-
 /* ===== BOARD ===== */
 
 .board {
@@ -81,7 +73,8 @@ body {
   transform: rotateY(180deg);
 }
 
-.front, .back {
+.front,
+.back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -89,25 +82,42 @@ body {
   padding: 15px 15px 60px 15px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   backface-visibility: hidden;
+  box-sizing: border-box;
 }
 
+/* Imagen */
 .front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* ===== TEXTO ATRÁS (ARREGLADO) ===== */
+
 .back {
   transform: rotateY(180deg);
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  font-size: 18px;
-  padding: 30px;
+  font-size: 15px;
+  padding: 20px;
+  line-height: 1.4;
+  overflow-y: auto;
 }
 
-/* Zoom cuando se activa */
+/* Scroll bonito */
+.back::-webkit-scrollbar {
+  width: 6px;
+}
+
+.back::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+/* ===== Zoom cuando se activa ===== */
 
 .polaroid.active {
   position: fixed;
@@ -116,3 +126,4 @@ body {
   transform: translate(-50%, -50%) scale(2);
   z-index: 1000;
 }
+
