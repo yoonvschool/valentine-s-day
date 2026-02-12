@@ -1,1 +1,97 @@
+body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background: #f5efe6; /* Puedes cambiar esto */
+  overflow-x: hidden;
+}
+
+/* ===== TÍTULO ===== */
+
+#ransom-title {
+  text-align: center;
+  margin-top: 40px;
+}
+
+#ransom-title span {
+  display: inline-block;
+  padding: 4px 6px;
+  margin: 2px;
+  background: white;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ===== COLLAGE ===== */
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  padding: 80px;
+  position: relative;
+}
+
+/* ===== POLAROID ===== */
+
+.polaroid {
+  width: 240px;
+  height: 320px;
+  perspective: 1000px;
+  transition: all 0.5s ease;
+}
+
+/* Polaroid central ligeramente más grande */
+.center {
+  transform: scale(1.1);
+}
+
+/* Zoom cuando se activa */
+.polaroid.active {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  z-index: 1000;
+}
+
+/* Tarjeta */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  cursor: pointer;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Caras */
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  padding: 15px 15px 60px 15px; /* efecto polaroid */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  backface-visibility: hidden;
+}
+
+.front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+  padding: 30px;
+}
 
