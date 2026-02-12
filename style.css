@@ -20,37 +20,49 @@ body {
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
-/* ===== COLLAGE ===== */
+/* ===== BOARD ===== */
 
 .board {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 60px;
+  justify-items: center;
+  align-items: center;
   padding: 80px;
-  position: relative;
 }
 
-/* ===== POLAROID ===== */
+/* ===== POLAROID BASE ===== */
 
 .polaroid {
-  width: 240px;
-  height: 320px;
+  width: 220px;
+  height: 300px;
   perspective: 1000px;
-  transition: all 0.5s ease;
+  transition: all 0.4s ease;
 }
+
+/* Rotaciones messy arriba */
+.polaroid:nth-child(1) { transform: rotate(-4deg); }
+.polaroid:nth-child(2) { transform: rotate(3deg); }
+.polaroid:nth-child(3) { transform: rotate(-2deg); }
+.polaroid:nth-child(4) { transform: rotate(5deg); }
+
+/* ===== CENTRO ===== */
 
 .center {
-  transform: scale(1.1);
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  transform: rotate(0deg);
+  z-index: 5;
 }
 
-.polaroid.active {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(2);
-  z-index: 1000;
-}
+/* Rotaciones messy abajo */
+.polaroid:nth-child(6) { transform: rotate(4deg); }
+.polaroid:nth-child(7) { transform: rotate(-3deg); }
+.polaroid:nth-child(8) { transform: rotate(2deg); }
+.polaroid:nth-child(9) { transform: rotate(-5deg); }
+
+/* ===== CARD ===== */
 
 .card {
   width: 100%;
@@ -91,4 +103,12 @@ body {
   padding: 30px;
 }
 
+/* Zoom cuando se activa */
 
+.polaroid.active {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  z-index: 1000;
+}
